@@ -6,7 +6,6 @@ DragonFlyight.Views.NonGame = Backbone.View.extend({
   template: JST["non_game"],
 
   render: function(){
-    console.log('renderin')
     var content = this.template({
       games: this.collection,
     });

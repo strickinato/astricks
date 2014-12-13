@@ -20,6 +20,15 @@
 </div>
 <div id="play-button">Play!</div>
 
+<div id="high-score-form">
+  <form class="high_score_form">
+    <label for="game_name">Name:</label>
+    <input
+      id="game_name"
+      name="game[name]"
+      class="form-input">
+  </form>
+</div>
 
 <script>
   $("#play-button").on("click", function() { Asteroids.Util.startGame(); })
