@@ -1,12 +1,12 @@
-DragonFlyight.Views.HighScores = Backbone.View.extend({
+DragonFlyight.Views.NonGame = Backbone.View.extend({
   initialize: function(){
     this.listenTo(this.collection, "sync", this.render)
   },
 
-  template: JST["high_scores"],
+  template: JST["non_game"],
 
   render: function(){
-    console.log("rendering")
+    console.log('renderin')
     var content = this.template({
       games: this.collection,
     });

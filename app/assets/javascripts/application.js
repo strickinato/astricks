@@ -22,7 +22,6 @@
 //= require lib/game
 //= require lib/gameView
 //= require lib/asteroid
-//= require asteroids
 //= require underscore
 //= require backbone
 //= require dragon_flyight

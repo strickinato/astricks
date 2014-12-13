@@ -28,18 +28,16 @@
   }
 
   Util.endGame = function(points) {
-    $("#game-canvas").hide()
-    $("#post-game-box").show()
-    console.log(DragonFlyight.HighScores)
-    var view = new DragonFlyight.Views.HighScores({
+    console.log('hi')
+    var view = new DragonFlyight.Views.NonGame({
       collection: DragonFlyight.HighScores
     })
-    $("#post-game-box").html(view.render().$el)
-
+    $("#main").html(view.render().$el)
   }
 
-
-  Util.resetGame = function() {
+  Util.startGame = function() {
+    var view = new DragonFlyight.Views.Game()
+    $("#main").html(view.render().$el)
     var canvasEl = document.getElementsByTagName("canvas")[0];
     var ctx = canvasEl.getContext('2d');
     canvasEl.height = window.innerHeight;
@@ -48,5 +46,18 @@
     var gameView = new Asteroids.GameView(game, ctx);
     gameView.start();
   }
+
+  //
+  // Util.resetGame = function() {
+  //   var canvasEl = document.getElementsByTagName("canvas")[0];
+  //   var ctx = canvasEl.getContext('2d');
+  //   canvasEl.height = window.innerHeight;
+  //   canvasEl.width = window.innerWidth;
+  //   var game = new Asteroids.Game()
+  //   var gameView = new Asteroids.GameView(game, ctx);
+  //   gameView.start();
+  // }
+
+
 
 })(window);
