@@ -1,15 +1,26 @@
-<h1>High Scores</h1>
-<table>
-  <tr>
-    <th>Rank</th>
-    <th>Name</th>
-    <th>Score</th>
-  </tr>
-  <% games.each(function(game, index){ %>
+<h1>Welcome to AStricks<h1>
+<h2>Like asteroids, but Aaron Strick</h2>
+
+<div class="high-scores">
+  <h1>High Scores</h1>
+  <table>
     <tr>
-    <td><%= (index + 1) %></td>
-    <td><%= game.escape('name') %></td>
-    <td><%= game.escape('score') %></td>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Score</th>
     </tr>
-  <% }) %>
-</table>
+    <% games.each(function(game, index){ %>
+      <tr>
+      <td><%= (index + 1) %></td>
+      <td><%= game.escape('name') %></td>
+      <td><%= game.escape('score') %></td>
+      </tr>
+    <% }) %>
+  </table>
+</div>
+<div id="play-button">Play!</div>
+
+
+<script>
+  $("#play-button").on("click", function() { Asteroids.Util.startGame(); })
+</script>

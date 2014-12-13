@@ -19,18 +19,45 @@
    height: 100%;
    overflow: hidden;
    background-color: #000;
+   font-family: monospace;
+   color: #7CFC00;
  }
 
  #game-canvas {
    overflow: hidden;
  }
 
- #main {
-  color: #7CFC00;
+#main {
+  text-align: center;
+}
+
+.high-scores {
   margin: 0 auto;
-  width: 50%;
+  width: 500px;
   border: solid 1px white;
-  font-family: monospace;
   height: 50%;
   font-size: 18px;
- }
+}
+.high-scores table {
+  width: 90%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#play-button {
+  padding: 10px;
+  height: 20px;
+  width: 40px;
+  border: solid 1px #7CFC00;
+  margin: 20px auto;
+}
+
+#play-button:hover {
+  background-color: #7CFC00;
+  padding: 7px;
+  height: 20px;
+  width: 40px;
+  border: solid 1px #7CFC00;
+  margin: 20px auto;
+  color: black;
+}
