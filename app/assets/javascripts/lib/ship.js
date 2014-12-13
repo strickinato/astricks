@@ -32,7 +32,7 @@
     var pos = this.pos.slice(0)
 
     pos[0] = pos[0] + SHIPRADIUS + BULLETRADIUS
-    vel[0] = vel[0] + 5;
+    vel[0] = vel[0] + 10;
     var bullet = new Asteroids.Bullet(this.game, pos, vel);
     this.game.addObject(bullet);
   }
