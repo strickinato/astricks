@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+ html, body {
+   padding: 0;
+   margin: 0;
+   height: 100%;
+   overflow: hidden;
+   background-color: #000;
+ }
+
+ #game-canvas {
+   overflow: hidden;
+ }
+ 

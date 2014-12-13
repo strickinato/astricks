@@ -13,4 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require keymaster
+//= require lib/utils
+//= require lib/movingObject
+//= require lib/asteroid
+//= require lib/ship
+//= require lib/bullet
+//= require lib/game
+//= require lib/gameView
+//= require lib/asteroid
+//= require asteroids
