@@ -27,6 +27,12 @@
     return vertices
   }
 
+  Util.endGame = function(points) {
+    $("#game-canvas").hide()
+    $("#post-game-box").show()
+  }
+
+
   Util.resetGame = function() {
     var canvasEl = document.getElementsByTagName("canvas")[0];
     var ctx = canvasEl.getContext('2d');

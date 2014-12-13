@@ -24,4 +24,13 @@
  #game-canvas {
    overflow: hidden;
  }
- 
+
+ #post-game-box {
+  color: #7CFC00;
+  margin: 0 auto;
+  width: 50%;
+  border: solid 1px white;
+  font-family: monospace;
+  height: 50%;
+  font-size: 18px;
+ }
