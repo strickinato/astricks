@@ -107,6 +107,7 @@
 
   Game.prototype.checkGame = function() {
     if (this.lives < 1) {
+      clearInterval(this.interval)
       Asteroids.Util.endGame(this.points)
     }
   }

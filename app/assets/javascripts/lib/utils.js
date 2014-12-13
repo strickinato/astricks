@@ -30,6 +30,12 @@
   Util.endGame = function(points) {
     $("#game-canvas").hide()
     $("#post-game-box").show()
+    console.log(DragonFlyight.HighScores)
+    var view = new DragonFlyight.Views.HighScores({
+      collection: DragonFlyight.HighScores
+    })
+    $("#post-game-box").html(view.render().$el)
+
   }
 
 

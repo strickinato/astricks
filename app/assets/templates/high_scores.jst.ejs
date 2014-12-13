@@ -1,0 +1,15 @@
+<h1>High Scores</h1>
+<table>
+  <tr>
+    <th>Rank</th>
+    <th>Name</th>
+    <th>Score</th>
+  </tr>
+  <% games.each(function(game, index){ %>
+    <tr>
+    <td><%= index %></td>
+    <td><%= game.escape('name') %></td>
+    <td><%= game.escape('score') %></td>
+    </tr>
+  <% }) %>
+</table>
