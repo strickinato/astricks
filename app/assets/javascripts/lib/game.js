@@ -3,7 +3,7 @@
 
   DIM_X = window.innerWidth;
   DIM_Y = window.innerHeight;
-  NUM_ASTEROIDS = 30;
+  NUM_ASTEROIDS = 1;
   BULLET_COUNT = 20;
 
   var Game = Asteroids.Game = function () {
@@ -13,6 +13,7 @@
     this.bullets = [];
     this.lives = 3;
     this.points = 0;
+    this.difficulty = 1;
   }
 
   Game.prototype.allObjects = function() {
@@ -130,7 +131,21 @@
     ctx.fillText("Lives: " + this.lives, 10, 50);
     ctx.fillText("Points: " + this.points, 10, 80);
     //ctx.fillText("Ammo: " + (BULLET_COUNT - this.bullets.length), 10, 110);
+  }
 
+  Game.prototype.increaseDifficulty = function() {
+    this.difficulty += 1;
+  }
+
+  Game.prototype.sendInMoreAsteroids = function() {
+    window.clearInterval(this.newAsteroidInterval);
+    this.newAsteroidInterval = root.setInterval((function() {
+      var numAsteroids = Math.ceil(this.difficulty / 2)
+      for(var i = 0; i < numAsteroids; i++) {
+        var newAsteroid = new Asteroids.Asteroid(this.randomPosition(), this);
+        this.addObject(newAsteroid);
+      }
+    }).bind(this), (-2 * this.difficulty + 1000));
   }
 
 

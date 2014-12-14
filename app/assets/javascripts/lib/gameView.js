@@ -12,12 +12,12 @@
       this.game.draw(this.ctx);
       this.bindKeys();
     }).bind(this), 1000/60);
+    this.game.sendInMoreAsteroids();
 
-    root.setInterval((function() {
-      var newAsteroid = new Asteroids.Asteroid(this.game.randomPosition(), this.game);
-      this.game.addObject(newAsteroid);
-      this.game.addObject(newAsteroid);
-    }).bind(this), 500);
+    root.setInterval((function(){
+      this.game.increaseDifficulty();
+      this.game.sendInMoreAsteroids();
+    }).bind(this), 10000)
   };
 
   GameView.prototype.bindKeys = function() {
