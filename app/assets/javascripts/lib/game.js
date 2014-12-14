@@ -3,7 +3,7 @@
 
   DIM_X = window.innerWidth;
   DIM_Y = window.innerHeight;
-  NUM_ASTEROIDS = 10;
+  NUM_ASTEROIDS = 30;
   BULLET_COUNT = 20;
 
   var Game = Asteroids.Game = function () {
@@ -31,9 +31,7 @@
     if (obj instanceof Asteroids.Asteroid) {
       this.asteroids.push(obj)
     } else if (obj instanceof Asteroids.Bullet) {
-      if (this.bullets.length < BULLET_COUNT) {
         this.bullets.push(obj)
-      }
     }
   }
 
@@ -131,7 +129,7 @@
     stats += "Ammo: " + (BULLET_COUNT - this.bullets.length)
     ctx.fillText("Lives: " + this.lives, 10, 50);
     ctx.fillText("Points: " + this.points, 10, 80);
-    ctx.fillText("Ammo: " + (BULLET_COUNT - this.bullets.length), 10, 110);
+    //ctx.fillText("Ammo: " + (BULLET_COUNT - this.bullets.length), 10, 110);
 
   }
 

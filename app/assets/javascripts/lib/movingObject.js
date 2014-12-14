@@ -34,7 +34,7 @@
 
  MovingObject.prototype.move = function() {
    if (this.game.isHittingWall(this)) {
-     this.bounce()
+     this.bounce('y')
    }
    this.clearObjectIfOff();
    var newX = (this.pos[0] + this.vel[0])
@@ -43,8 +43,9 @@
    this.pos = newPos
  }
 
- MovingObject.prototype.bounce = function() {
-   this.vel[1] = -this.vel[1]
+ MovingObject.prototype.bounce = function(dim) {
+   if(dim == "x") this.vel[0] = -this.vel[0];
+   if(dim == "y") this.vel[1] = -this.vel[1];
  }
 
  MovingObject.prototype.clearObjectIfOff = function() {

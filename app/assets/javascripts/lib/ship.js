@@ -49,6 +49,12 @@
     ctx.fill();
   }
 
+  Ship.prototype.clearObjectIfOff = function() {
+    if (this.game.clearedAreaLeft(this)) {
+      this.bounce('x')
+    }
+  }
+
   // MovingObject.prototype.draw = function(ctx) {
   //   ctx.fillStyle = this.color;
   //   ctx.beginPath();
