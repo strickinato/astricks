@@ -4,7 +4,7 @@
   DIM_X = window.innerWidth;
   DIM_Y = window.innerHeight;
   NUM_ASTEROIDS = 10;
-  BULLET_COUNT = 40;
+  BULLET_COUNT = 20;
 
   var Game = Asteroids.Game = function () {
     this.asteroids = [];

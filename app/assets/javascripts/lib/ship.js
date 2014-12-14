@@ -5,9 +5,9 @@
   BULLETRADIUS = 3;
 
   var Ship = Asteroids.Ship = function(game) {
-    var center = [(DIM_X / 2),(DIM_Y / 2)]
+    this.center = [30,(DIM_Y / 2)]
     Asteroids.MovingObject.call(this, {
-      pos: center,
+      pos: this.center,
       vel: [0, 0],
       radius: SHIPRADIUS,
       color: "rgb(0, 0, 0)",
@@ -18,7 +18,7 @@
   Asteroids.Util.inherits(Ship, Asteroids.MovingObject);
 
   Ship.prototype.relocate = function() {
-    this.pos = this.game.randomPosition();
+    this.pos = this.center
     this.vel = [0, 0];
   }
 
