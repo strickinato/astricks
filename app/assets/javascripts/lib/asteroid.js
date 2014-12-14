@@ -24,6 +24,12 @@
    }
  }
 
+ Asteroid.prototype.clearObjectIfOff = function() {
+   if (this.game.clearedAreaLeft(this)) {
+     this.game.removeObject(this)
+   }
+ }
+
 
 
  })(window);

@@ -46,7 +46,7 @@
   }
 
   Game.prototype.randomPosition = function () {
-    pos_x = Math.random() * DIM_X;
+    pos_x = DIM_X + 50;
     pos_y = Math.random() * DIM_Y;
     return [pos_x, pos_y]
   }
@@ -69,24 +69,24 @@
       movingObject.move(ctx);
     });
   }
-
-  Game.prototype.wrap = function(pos) {
-    wrappedPos = [pos[0], pos[1]]
-    if(pos[0] < 0) {
-      wrappedPos[0] = DIM_X;
-    }
-    if(pos[0] > DIM_X) {
-      wrappedPos[0] = 0;
-    }
-    if(pos[1] > DIM_Y) {
-      wrappedPos[1] = 0;
-    }
-    if(pos[1] < 0) {
-      wrappedPos[1] = DIM_Y;
-    }
-
-    return wrappedPos;
-  }
+  //
+  // Game.prototype.wrap = function(pos) {
+  //   wrappedPos = [pos[0], pos[1]]
+  //   if(pos[0] < 0) {
+  //     wrappedPos[0] = DIM_X;
+  //   }
+  //   if(pos[0] > DIM_X) {
+  //     wrappedPos[0] = 0;
+  //   }
+  //   if(pos[1] > DIM_Y) {
+  //     wrappedPos[1] = 0;
+  //   }
+  //   if(pos[1] < 0) {
+  //     wrappedPos[1] = DIM_Y;
+  //   }
+  //
+  //   return wrappedPos;
+  // }
 
   Game.prototype.checkCollisions = function() {
     var thisGame = this;
@@ -112,10 +112,15 @@
     }
   }
 
-  Game.prototype.isOutOfBounds = function(obj) {
-    var outXAxis = (obj.pos[0] < 0 || obj.pos[0] > DIM_X)
-    var outYAxis = (obj.pos[1] < 0 || obj.pos[1] > DIM_Y)
-    return (outXAxis || outYAxis)
+  Game.prototype.isHittingWall = function(obj) {
+    return ((obj.pos[1] - obj.radius) < 0 || (obj.pos[1] + obj.radius) > DIM_Y)
+  }
+
+  Game.prototype.clearedAreaLeft = function(obj) {
+    return (obj.pos[0] < (0 - obj.radius))
+  }
+  Game.prototype.clearedAreaRight = function(obj) {
+    return (obj.pos[0] > (DIM_X + obj.radius))
   }
 
   Game.prototype.inputStats = function(ctx) {

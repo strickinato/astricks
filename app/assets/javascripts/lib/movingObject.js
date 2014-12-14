@@ -33,14 +33,24 @@
  }
 
  MovingObject.prototype.move = function() {
+   if (this.game.isHittingWall(this)) {
+     this.bounce()
+   }
+   this.clearObjectIfOff();
    var newX = (this.pos[0] + this.vel[0])
    var newY = (this.pos[1] + this.vel[1])
    var newPos = [newX, newY]
-   if (this.game.isOutOfBounds(this)) {
-     newPos = this.game.wrap(newPos)
-   }
    this.pos = newPos
  }
+
+ MovingObject.prototype.bounce = function() {
+   this.vel[1] = -this.vel[1]
+ }
+
+ MovingObject.prototype.clearObjectIfOff = function() {
+ }
+
+
 
  MovingObject.prototype.isCollidedWith = function(otherObject){
    if (otherObject) {

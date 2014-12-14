@@ -23,4 +23,12 @@
       this.game.removeObject(this)
     }
   }
+
+
+  Bullet.prototype.clearObjectIfOff = function() {
+    if (this.game.clearedAreaRight(this)) {
+      this.game.removeObject(this)
+    }
+  }
+
 })(window);

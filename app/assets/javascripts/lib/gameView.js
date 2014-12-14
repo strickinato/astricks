@@ -13,6 +13,10 @@
       this.bindKeys();
     }).bind(this), 1000/60);
 
+    root.setInterval((function() {
+      var newAsteroid = new Asteroids.Asteroid(this.game.randomPosition(), this.game);
+      this.game.addObject(newAsteroid);
+    }).bind(this), 1000);
   };
 
   GameView.prototype.bindKeys = function() {

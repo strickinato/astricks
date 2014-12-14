@@ -13,7 +13,7 @@
   }
 
   Util.randomVel = function(length) {
-    dx = (Math.random() * 2 - 1) * length;
+    dx = (Math.random() * -1) * length;
     dy = (Math.random() * 2 - 1) * length;
     return [dx, dy];
   }
@@ -72,18 +72,6 @@
     var gameView = new Asteroids.GameView(game, ctx);
     gameView.start();
   }
-
-  //
-  // Util.resetGame = function() {
-  //   var canvasEl = document.getElementsByTagName("canvas")[0];
-  //   var ctx = canvasEl.getContext('2d');
-  //   canvasEl.height = window.innerHeight;
-  //   canvasEl.width = window.innerWidth;
-  //   var game = new Asteroids.Game()
-  //   var gameView = new Asteroids.GameView(game, ctx);
-  //   gameView.start();
-  // }
-
 
 
 })(window);
