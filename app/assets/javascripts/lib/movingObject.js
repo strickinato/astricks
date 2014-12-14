@@ -48,8 +48,9 @@
    if(dim == "y") this.vel[1] = -this.vel[1];
  }
 
- MovingObject.prototype.clearObjectIfOff = function() {
- }
+ MovingObject.prototype.clearObjectIfOff = function() {}
+ MovingObject.prototype.statusCheck = function() {}
+ MovingObject.prototype.collideWith = function(otherObject) {}
 
 
 
@@ -63,8 +64,6 @@
    }
  }
 
- MovingObject.prototype.collideWith = function(otherObject) {
- }
 
 
 })(window);

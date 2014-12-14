@@ -3,14 +3,15 @@
 
   DIM_X = window.innerWidth;
   DIM_Y = window.innerHeight;
-  NUM_ASTEROIDS = 1;
+  NUM_ASTEROIDS = 10;
   BULLET_COUNT = 20;
 
   var Game = Asteroids.Game = function () {
     this.asteroids = [];
+    this.bullets = [];
+    this.explodingObjects = [];
     this.ship = new Asteroids.Ship(this)
     this.addAsteroids();
-    this.bullets = [];
     this.lives = 3;
     this.points = 0;
     this.difficulty = 1;
@@ -18,7 +19,7 @@
 
   Game.prototype.allObjects = function() {
     var allObjects = this.asteroids.slice(0)
-    allObjects = allObjects.concat(this.ship).concat(this.bullets);
+    allObjects = allObjects.concat(this.ship).concat(this.bullets).concat(this.explodingObjects);
     return allObjects
   }
 
@@ -32,7 +33,9 @@
     if (obj instanceof Asteroids.Asteroid) {
       this.asteroids.push(obj)
     } else if (obj instanceof Asteroids.Bullet) {
-        this.bullets.push(obj)
+      this.bullets.push(obj)
+    } else if (obj instanceof Asteroids.ExplodingObject) {
+      this.explodingObjects.push(obj)
     }
   }
 
@@ -41,6 +44,8 @@
       this.asteroids.splice([this.asteroids.indexOf(obj)], 1);
     } else if (obj instanceof Asteroids.Bullet) {
       this.bullets.splice([this.bullets.indexOf(obj)], 1);
+    } else if (obj instanceof Asteroids.ExplodingObject) {
+      this.explodingObjects.splice([this.explodingObjects.indexOf(obj)], 1)
     }
   }
 
@@ -56,7 +61,7 @@
     ctx.fillRect(0, 0, DIM_X, DIM_Y);
     this.inputStats(ctx);
     this.allObjects().forEach(function (movingObject) {
-      if(movingObject.radius < 3) {
+      if(movingObject.radius < 0) {
         this.removeObject(movingObject);
       }
       movingObject.draw(ctx);
@@ -65,6 +70,7 @@
 
   Game.prototype.moveObjects = function (ctx) {
     this.allObjects().forEach(function (movingObject) {
+      movingObject.statusCheck();
       movingObject.move(ctx);
     });
   }

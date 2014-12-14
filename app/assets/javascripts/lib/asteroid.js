@@ -30,6 +30,38 @@
    }
  }
 
+ Asteroid.prototype.statusCheck = function() {
+   if(this.radius < 3) {
+     this.game.points += 5;
+     this.explode();
+     this.game.removeObject(this);
+   }
+ }
+
+ Asteroid.prototype.explode = function() {
+   var minSize = 10;
+   var maxSize = 30;
+   var count = 10;
+   var minSpeed = 2.0;
+   var maxSpeed = 5.0;
+   var minScaleSpeed = 1.0;
+   var maxScaleSpeed = 4.0;
+   var speed = Asteroids.Util.randomFloat(minSpeed, maxSpeed);
+
+   for (var angle=0; angle<360; angle += Math.round(360/count)) {
+     var velX = speed * Math.cos(angle * Math.PI / 180.0) + this.vel[0];
+     var velY = speed * Math.sin(angle * Math.PI / 180.0) + this.vel[1];
+     var particle = new Asteroids.ExplodingObject({
+       pos: this.pos,
+       radius: Asteroids.Util.randomFloat(minSize, maxSize),
+       scaleSpeed: Asteroids.Util.randomFloat(minScaleSpeed, maxScaleSpeed),
+       vel: [velX, velY],
+       color: '#FFF',
+       game: this.game
+     });
+     this.game.addObject(particle)
+   }
+ }
 
 
  })(window);
