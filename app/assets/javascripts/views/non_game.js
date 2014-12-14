@@ -1,5 +1,7 @@
 DragonFlyight.Views.NonGame = Backbone.View.extend({
-  initialize: function(){
+  initialize: function(options){
+    this.points = options.points
+    debugger
     this.listenTo(this.collection, "sync", this.render)
   },
 
@@ -8,6 +10,7 @@ DragonFlyight.Views.NonGame = Backbone.View.extend({
   render: function(){
     var content = this.template({
       games: this.collection,
+      points: this.points
     });
     this.$el.html(content);
 

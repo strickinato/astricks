@@ -27,12 +27,35 @@
     return vertices
   }
 
-  Util.endGame = function(points) {
-    console.log('hi')
+  Util.loadNonGame = function(points) {
     var view = new DragonFlyight.Views.NonGame({
-      collection: DragonFlyight.HighScores
+      collection: DragonFlyight.HighScores,
+      points: points
     })
     $("#main").html(view.render().$el)
+    if (points) {
+      this.checkScore(points)
+    }
+  }
+
+  Util.checkScore = function(points) {
+    if (points > DragonFlyight.HighScores.last().get("score")) {
+      $("#high-score-form").fadeIn()
+      .animate({top:275}, 800);
+    }
+  }
+
+  Util.submitForm = function() {
+    var formData = {game: {score: 0, name: ""}}
+    formData.game.score = parseInt($("#game_score").val());
+    formData.game.name = $("#game_name").val();
+    JSON.stringify(formData)
+
+    var highScore = new DragonFlyight.Models.Game(formData);
+    debugger
+    DragonFlyight.HighScores.create(highScore, {
+      success: function(){ alert("saved") }
+    });
   }
 
   Util.startGame = function() {

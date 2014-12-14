@@ -46,19 +46,31 @@
   text-align: left;
 }
 
-#play-button {
-  padding: 7px;
-  height: 20px;
-  width: 40px;
+#high-score-form {
+  display: none;
+  position: absolute;
+  top: -500px;
+  background-color: black;
   border: solid 1px #7CFC00;
-  margin: 20px auto;
+  width: 400px;
+  height: 200px;
+  padding: 10px;
+  left: 50%;
+  margin-left: -200px;
 }
 
-#play-button:hover {
+.space-button {
+  padding: 7px;
+  height: 20px;
+  border: solid 1px #7CFC00;
+  margin: 20px auto;
+  display: inline-block;
+}
+
+.space-button:hover {
   background-color: #7CFC00;
   padding: 7px;
   height: 20px;
-  width: 40px;
   border: solid 1px #7CFC00;
   margin: 20px auto;
   color: black;

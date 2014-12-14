@@ -18,18 +18,30 @@
     <% }) %>
   </table>
 </div>
-<div id="play-button">Play!</div>
+<div class="space-button play-button">Play! </div>
 
 <div id="high-score-form">
-  <form class="high_score_form">
+<h3> You got a high score! </h3>
+  <form class="high_score_form" id="score-form">
+    <input
+      type="hidden"
+      id="game_score"
+      name="game[score]"
+      value="<%= points %>">
+
     <label for="game_name">Name:</label>
     <input
+      type="text"
       id="game_name"
       name="game[name]"
       class="form-input">
   </form>
+  <div class="space-button" id="submit-form">Submit</div>
+  <div class="space-button" id="play-button">Play Again</div>
 </div>
 
 <script>
-  $("#play-button").on("click", function() { Asteroids.Util.startGame(); })
+  $(".play-button").on("click", function() { Asteroids.Util.startGame(); })
+  $("#submit-form").on("click", function() { Asteroids.Util.submitForm(); })
+
 </script>

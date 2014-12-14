@@ -11,5 +11,5 @@ window.DragonFlyight = {
 
 $(document).ready(function(){
   DragonFlyight.initialize();
-  Asteroids.Util.endGame();
+  Asteroids.Util.loadNonGame();
 });
