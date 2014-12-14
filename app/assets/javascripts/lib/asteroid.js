@@ -31,10 +31,10 @@
  }
 
  Asteroid.prototype.statusCheck = function() {
-   if(this.radius < 3) {
+   if(this.radius < 5) {
      this.game.points += 5;
-     this.explode();
      this.game.removeObject(this);
+     this.explode();
    }
  }
 
