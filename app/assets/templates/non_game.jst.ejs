@@ -11,11 +11,12 @@
     </tr>
     <% games.each(function(game, index){ %>
       <tr>
-      <td><%= (index + 1) %></td>
-      <td><%= game.escape('name') %></td>
-      <td><%= game.escape('score') %></td>
+      <% if (index < 10) { %>
+        <td><%= (index + 1) %></td>
+        <td><%= game.escape('name') %></td>
+        <td><%= game.escape('score') %></td>
       </tr>
-    <% }) %>
+    <% }}) %>
   </table>
 </div>
 <div class="space-button play-button">Play! </div>

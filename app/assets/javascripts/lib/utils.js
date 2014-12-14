@@ -52,9 +52,12 @@
     JSON.stringify(formData)
 
     var highScore = new DragonFlyight.Models.Game(formData);
-    debugger
-    DragonFlyight.HighScores.create(highScore, {
-      success: function(){ alert("saved") }
+    highScore.save(null, {
+      success: function(model) {
+        $("#high-score-form").fadeOut()
+        .animate({top:-500}, 800);
+        DragonFlyight.HighScores.add(model);
+      }
     });
   }
 
