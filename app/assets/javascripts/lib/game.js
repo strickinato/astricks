@@ -148,8 +148,10 @@
     this.newAsteroidInterval = root.setInterval((function() {
       var numAsteroids = Math.ceil(this.difficulty / 2)
       for(var i = 0; i < numAsteroids; i++) {
-        var newAsteroid = new Asteroids.Asteroid(this.randomPosition(), this);
-        this.addObject(newAsteroid);
+        if(this.asteroids.length < 60) {
+          var newAsteroid = new Asteroids.Asteroid(this.randomPosition(), this);
+          this.addObject(newAsteroid);
+        }
       }
     }).bind(this), (-2 * this.difficulty + 1000));
   }
