@@ -6,9 +6,10 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
-
     if @game.save!
+      render "static_pages/root"
     else
+      render "static_pages/root"
     end
   end
 
