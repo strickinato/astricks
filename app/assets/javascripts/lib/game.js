@@ -3,7 +3,7 @@
 
   DIM_X = window.innerWidth;
   DIM_Y = window.innerHeight;
-  NUM_ASTEROIDS = 10;
+  NUM_ASTEROIDS = 5;
   BULLET_COUNT = 20;
 
   var Game = Asteroids.Game = function () {
@@ -95,13 +95,17 @@
 
   Game.prototype.checkCollisions = function() {
     var thisGame = this;
-    this.allObjects().forEach(function(obj1){
-      thisGame.allObjects().forEach(function(obj2){
-        if((obj1 !== obj2) && obj1.isCollidedWith(obj2)) {
-          obj1.collideWith(obj2)
+    this.asteroids.forEach(function(asteroid){
+      thisGame.bullets.forEach(function(bullet){
+        if(asteroid.isCollidedWith(bullet)) {
+          bullet.collideWith(asteroid)
         }
-      })
-    })
+      });
+      if(asteroid.isCollidedWith(thisGame.ship)) {
+        asteroid.collideWith(thisGame.ship)
+      }
+    });
+
   }
 
   Game.prototype.step = function() {
@@ -136,11 +140,10 @@
     stats += "Ammo: " + (BULLET_COUNT - this.bullets.length)
     ctx.fillText("Lives: " + this.lives, 10, 50);
     ctx.fillText("Points: " + this.points, 10, 80);
-    //ctx.fillText("Ammo: " + (BULLET_COUNT - this.bullets.length), 10, 110);
   }
 
   Game.prototype.increaseDifficulty = function() {
-    if (this.difficulty < 10) {
+    if (this.difficulty < 5) {
       this.difficulty += 1;
     }
   }

@@ -18,11 +18,11 @@
     return [dx, dy];
   }
 
-  Util.calculateTriangle = function(pos, or) {
+  Util.calculateTriangle = function(pos) {
     var vertices = [[],[pos],[]]
-    vertices[0] = [(pos[0] - (50 * Math.cos(or))), (pos[1] - 15)]
-    vertices[1] = pos
-    vertices[2] = [(pos[0] - (50 * Math.cos(or))), (pos[1] + 15)]
+    vertices[0] = [(pos[0]), (pos[1] - 15)]
+    vertices[1] = [(pos[0] + 50), (pos[1])]
+    vertices[2] = [(pos[0]), (pos[1] + 15)]
 
     return vertices
   }

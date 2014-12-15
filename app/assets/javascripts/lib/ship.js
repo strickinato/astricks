@@ -1,7 +1,7 @@
 (function(root){
   var Asteroids = root.Asteroids = root.Asteroids || {};
 
-  SHIPRADIUS = 20;
+  SHIPRADIUS = 0;
   BULLETRADIUS = 3;
 
   var Ship = Asteroids.Ship = function(game) {
@@ -13,11 +13,13 @@
       color: "rgb(0, 0, 0)",
       game: game,
     });
-    this.orientation = 1;
+    this.vertices = Asteroids.Util.calculateTriangle(this.pos);
   }
   Asteroids.Util.inherits(Ship, Asteroids.MovingObject);
 
   Ship.prototype.relocate = function() {
+    this.explode("rgb(255,255,255)");
+    this.explode("rgb(200,0,0)");
     this.pos = this.center
     this.vel = [0, 0];
   }
@@ -31,14 +33,14 @@
     var vel = this.vel.slice(0)
     var pos = this.pos.slice(0)
 
-    pos[0] = pos[0] + SHIPRADIUS + BULLETRADIUS
+    pos[0] = pos[0] + 50 + BULLETRADIUS
     vel[0] = vel[0] + 10;
     var bullet = new Asteroids.Bullet(this.game, pos, vel);
     this.game.addObject(bullet);
   }
 
   Ship.prototype.draw = function(ctx) {
-    var vertices = Asteroids.Util.calculateTriangle(this.pos, this.orientation);
+    var vertices = Asteroids.Util.calculateTriangle(this.pos);
     this.color = this.makeColor()
     ctx.fillStyle = this.color;
     ctx.beginPath();
@@ -54,20 +56,5 @@
       this.bounce('x')
     }
   }
-
-  // MovingObject.prototype.draw = function(ctx) {
-  //   ctx.fillStyle = this.color;
-  //   ctx.beginPath();
-  //
-  //   ctx.arc(
-  //     this.pos[0],
-  //     this.pos[1],
-  //     this.radius,
-  //     0,
-  //     2 * Math.PI,
-  //     false
-  //   );
-  //
-  //   ctx.fill();
 
 })(window);
