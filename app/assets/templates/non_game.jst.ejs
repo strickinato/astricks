@@ -22,8 +22,15 @@
 </div>
 <div class="space-button play-button">Play! </div>
 
+<div id="regular-score">
+<h2><%= points %> Points!</h2>
+<div class="space-button play-button">Play Again</div>
+
+</div>
+
 <div id="high-score-form">
-<h3> You got a high score! </h3>
+<h2><%= points %> Points!</h2>
+<h3> You got a high score!</h3>
   <form class="high_score_form" id="score-form">
     <input
       type="hidden"
@@ -37,9 +44,8 @@
       id="game_name"
       name="game[name]"
       class="form-input">
-  </form>
   <div class="space-button" id="submit-form">Submit</div>
-  <div class="space-button" id="play-button">Play Again</div>
+  </form>
 </div>
 
 <script>

@@ -59,6 +59,19 @@
   margin-left: -200px;
 }
 
+#regular-score {
+  display: none;
+  position: absolute;
+  top: -500px;
+  background-color: black;
+  border: solid 1px #7CFC00;
+  width: 400px;
+  height: 200px;
+  padding: 10px;
+  left: 50%;
+  margin-left: -200px;
+}
+
 .space-button {
   padding: 7px;
   height: 20px;

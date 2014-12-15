@@ -42,6 +42,9 @@
     if (points > DragonFlyight.HighScores.last().get("score")) {
       $("#high-score-form").fadeIn()
       .animate({top:275}, 800);
+    } else if (points) {
+      $("#regular-score").fadeIn()
+      .animate({top:275}, 800);
     }
   }
 
