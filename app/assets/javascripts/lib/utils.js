@@ -48,9 +48,11 @@
     }
   }
 
-  Util.submitForm = function() {
+  Util.submitForm = function(points) {
+debugger
+    event.preventDefault()
     var formData = {game: {score: 0, name: ""}}
-    formData.game.score = parseInt($("#game_score").val());
+    formData.game.score = points;
     formData.game.name = $("#game_name").val();
     JSON.stringify(formData)
 

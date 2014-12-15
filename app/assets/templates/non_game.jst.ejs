@@ -44,12 +44,12 @@
       id="game_name"
       name="game[name]"
       class="form-input">
-  <div class="space-button" id="submit-form">Submit</div>
+    <input class="space-button" type="submit" value="Save to Space.log">
   </form>
 </div>
 
 <script>
   $(".play-button").on("click", function() { Asteroids.Util.startGame(); })
-  $("#submit-form").on("click", function() { Asteroids.Util.submitForm(); })
+  $("#score-form").submit(function(e) { e.preventDefault(); Asteroids.Util.submitForm(<%= points %>); })
 
 </script>
