@@ -10,6 +10,7 @@
     this.asteroids = [];
     this.bullets = [];
     this.explodingObjects = [];
+    this.bonuses = [];
     this.ship = new Asteroids.Ship(this)
     this.addAsteroids();
     this.lives = 3;
@@ -19,7 +20,7 @@
 
   Game.prototype.allObjects = function() {
     var allObjects = this.asteroids.slice(0)
-    allObjects = allObjects.concat(this.ship).concat(this.bullets).concat(this.explodingObjects);
+    allObjects = allObjects.concat(this.ship).concat(this.bullets).concat(this.explodingObjects).concat(this.bonuses);
     return allObjects
   }
 
@@ -36,6 +37,8 @@
       this.bullets.push(obj)
     } else if (obj instanceof Asteroids.ExplodingObject) {
       this.explodingObjects.push(obj)
+    } else {
+      this.bonuses.push(obj)
     }
   }
 
@@ -45,7 +48,9 @@
     } else if (obj instanceof Asteroids.Bullet) {
       this.bullets.splice([this.bullets.indexOf(obj)], 1);
     } else if (obj instanceof Asteroids.ExplodingObject) {
-      this.explodingObjects.splice([this.explodingObjects.indexOf(obj)], 1)
+      this.explodingObjects.splice([this.explodingObjects.indexOf(obj)], 1);
+    } else {
+      this.bonuses.splice([this.bonuses.indexOf(obj)], 1);
     }
   }
 
@@ -74,24 +79,6 @@
       movingObject.move(ctx);
     });
   }
-  //
-  // Game.prototype.wrap = function(pos) {
-  //   wrappedPos = [pos[0], pos[1]]
-  //   if(pos[0] < 0) {
-  //     wrappedPos[0] = DIM_X;
-  //   }
-  //   if(pos[0] > DIM_X) {
-  //     wrappedPos[0] = 0;
-  //   }
-  //   if(pos[1] > DIM_Y) {
-  //     wrappedPos[1] = 0;
-  //   }
-  //   if(pos[1] < 0) {
-  //     wrappedPos[1] = DIM_Y;
-  //   }
-  //
-  //   return wrappedPos;
-  // }
 
   Game.prototype.checkCollisions = function() {
     var thisGame = this;
@@ -105,6 +92,11 @@
         asteroid.collideWith(thisGame.ship)
       }
     });
+    this.bonuses.forEach(function(bonus){
+      if(bonus.isCollidedWith(thisGame.ship)){
+        bonus.collideWith(thisGame.ship)
+      }
+    })
 
   }
 
@@ -153,7 +145,12 @@
     this.newAsteroidInterval = root.setInterval((function() {
       var numAsteroids = Math.ceil(this.difficulty / 2)
       for(var i = 0; i < numAsteroids; i++) {
-        var newAsteroid = new Asteroids.Asteroid(this.randomPosition(), this);
+        var newAsteroid;
+        if(Math.floor(Math.random() * 200) == 1) {
+          newAsteroid = new Asteroids.ExtraLife(this.randomPosition(), this);
+        } else {
+          newAsteroid = new Asteroids.Asteroid(this.randomPosition(), this);
+        }
         this.addObject(newAsteroid);
       }
     }).bind(this), (1000));
