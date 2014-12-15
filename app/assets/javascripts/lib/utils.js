@@ -12,8 +12,8 @@
 
   }
 
-  Util.randomVel = function() {
-    dx = (Math.random() * -1) - 5;
+  Util.randomVel = function(mod) {
+    dx = (Math.random() * -1) - 5 - mod;
     dy = (Math.random() * 2 - 1) * 2
     return [dx, dy];
   }
@@ -49,7 +49,6 @@
   }
 
   Util.submitForm = function(points) {
-debugger
     event.preventDefault()
     var formData = {game: {score: 0, name: ""}}
     formData.game.score = points;

@@ -3,11 +3,11 @@
 
  var RADIUS = 20;
 
- var Asteroid = Asteroids.Asteroid = function(pos, game) {
+ var Asteroid = Asteroids.Asteroid = function(pos, mod, game) {
    var color = this.makeColor()
    Asteroids.MovingObject.call(this, {
      pos: pos,
-     vel: Asteroids.Util.randomVel(3),
+     vel: Asteroids.Util.randomVel(mod),
      radius: RADIUS,
      color: "#FFF",
      game: game

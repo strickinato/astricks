@@ -26,7 +26,7 @@
 
   Game.prototype.addAsteroids = function () {
     for (var i = 0; i < NUM_ASTEROIDS; i++) {
-      this.addObject(new Asteroids.Asteroid(this.randomPosition(), this))
+      this.addObject(new Asteroids.Asteroid(this.randomPosition(), 0, this))
     }
   }
 
@@ -135,7 +135,7 @@
   }
 
   Game.prototype.increaseDifficulty = function() {
-    if (this.difficulty < 5) {
+    if (this.difficulty < 8) {
       this.difficulty += 1;
     }
   }
@@ -149,7 +149,8 @@
         if(Math.floor(Math.random() * 200) == 1) {
           newAsteroid = new Asteroids.ExtraLife(this.randomPosition(), this);
         } else {
-          newAsteroid = new Asteroids.Asteroid(this.randomPosition(), this);
+          var mod = (this.difficulty / 3.0);
+          newAsteroid = new Asteroids.Asteroid(this.randomPosition(), mod, this);
         }
         this.addObject(newAsteroid);
       }
