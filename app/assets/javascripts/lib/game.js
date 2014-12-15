@@ -135,7 +135,7 @@
   }
 
   Game.prototype.increaseDifficulty = function() {
-    if (this.difficulty < 8) {
+    if (this.difficulty < 20) {
       this.difficulty += 1;
     }
   }
@@ -144,6 +144,9 @@
     window.clearInterval(this.newAsteroidInterval);
     this.newAsteroidInterval = root.setInterval((function() {
       var numAsteroids = Math.ceil(this.difficulty / 2)
+      if (numAsteroids > 8) {
+        numAsteroids = 8
+      }
       for(var i = 0; i < numAsteroids; i++) {
         var newAsteroid;
         if(Math.floor(Math.random() * 200) == 1) {
