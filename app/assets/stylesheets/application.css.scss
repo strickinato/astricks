@@ -24,6 +24,19 @@
    color: #7CFC00;
  }
 
+input {
+  background-color: black;
+  height: 24px;
+  font-family: 'courier';
+  color: #7CFC00;
+  font-size: 18px;
+  width: 100px;
+  border: solid 1px #7CFC00;
+}
+input[type=submit] {
+  height: 28px;
+}
+
 
  #game-canvas {
    overflow: hidden;
