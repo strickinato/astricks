@@ -12,9 +12,9 @@
 
   }
 
-  Util.randomVel = function(length) {
-    dx = (Math.random() * -1) * length;
-    dy = (Math.random() * 2 - 1) * length;
+  Util.randomVel = function() {
+    dx = (Math.random() * -1) - 5;
+    dy = (Math.random() * 2 - 1) * 2
     return [dx, dy];
   }
 
